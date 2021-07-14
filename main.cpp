@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuick3D>
+#include <QSurfaceFormat>
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +10,8 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+    QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat(5));
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
