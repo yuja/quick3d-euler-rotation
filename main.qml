@@ -124,7 +124,6 @@ Window {
         GridLayout {
             Layout.alignment: Qt.AlignTop
             Layout.rowSpan: 2
-            Layout.preferredWidth: 240
             columns: 2
 
             Button {
@@ -151,6 +150,7 @@ Window {
 
             Label { text: "x:" }
             TextField {
+                Layout.preferredWidth: 180
                 selectByMouse: true
                 text: "0"
                 validator: DoubleValidator {}
@@ -162,6 +162,7 @@ Window {
 
             Label { text: "y:" }
             TextField {
+                Layout.preferredWidth: 180
                 selectByMouse: true
                 text: "0"
                 validator: DoubleValidator {}
@@ -173,6 +174,7 @@ Window {
 
             Label { text: "z:" }
             TextField {
+                Layout.preferredWidth: 180
                 selectByMouse: true
                 text: "0"
                 validator: DoubleValidator {}
@@ -182,38 +184,115 @@ Window {
                 }
             }
 
-            Label {
+            CheckBox {
+                id: eulerRotationEditableCheckBox
                 Layout.columnSpan: 2
                 font.bold: true
                 text: "eulerRotation:"
             }
 
             Label { text: "x: " }
-            Label { text: model.eulerRotation.x }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !eulerRotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.eulerRotation.x
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.eulerRotation.x = Number.parseFloat(text);
+                }
+            }
 
             Label { text: "y: " }
-            Label { text: model.eulerRotation.y }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !eulerRotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.eulerRotation.y
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.eulerRotation.y = Number.parseFloat(text);
+                }
+            }
 
             Label { text: "z: " }
-            Label { text: model.eulerRotation.z }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !eulerRotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.eulerRotation.z
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.eulerRotation.z = Number.parseFloat(text);
+                }
+            }
 
-            Label {
+            CheckBox {
+                id: rotationEditableCheckBox
                 Layout.columnSpan: 2
                 font.bold: true
                 text: "quaternion:"
             }
 
             Label { text: "scalar: " }
-            Label { text: model.rotation.scalar }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !rotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.rotation.scalar
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.rotation.scalar = Number.parseFloat(text);
+                }
+            }
 
             Label { text: "x: " }
-            Label { text: model.rotation.x }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !rotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.rotation.x
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.rotation.x = Number.parseFloat(text);
+                }
+            }
 
             Label { text: "y: " }
-            Label { text: model.rotation.y }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !rotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.rotation.y
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    if (readOnly)
+                        return;
+                    model.rotation.y = Number.parseFloat(text);
+                }
+            }
 
             Label { text: "z: " }
-            Label { text: model.rotation.z }
+            TextField {
+                Layout.preferredWidth: 180
+                readOnly: !rotationEditableCheckBox.checked
+                selectByMouse: true
+                text: model.rotation.z
+                validator: DoubleValidator {}
+                onEditingFinished: {
+                    model.rotation.z = Number.parseFloat(text);
+                }
+            }
         }
     }
 }
