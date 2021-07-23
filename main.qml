@@ -124,6 +124,7 @@ Window {
         GridLayout {
             Layout.alignment: Qt.AlignTop
             Layout.rowSpan: 2
+            Layout.preferredWidth: 240
             columns: 2
 
             Button {
@@ -188,13 +189,13 @@ Window {
             }
 
             Label { text: "x: " }
-            Label { text: model.eulerRotation.x.toFixed(3) }
+            Label { text: model.eulerRotation.x }
 
             Label { text: "y: " }
-            Label { text: model.eulerRotation.y.toFixed(3) }
+            Label { text: model.eulerRotation.y }
 
             Label { text: "z: " }
-            Label { text: model.eulerRotation.z.toFixed(3) }
+            Label { text: model.eulerRotation.z }
 
             Label {
                 Layout.columnSpan: 2
@@ -203,16 +204,16 @@ Window {
             }
 
             Label { text: "scalar: " }
-            Label { text: model.rotation.scalar.toFixed(3) }
+            Label { text: model.rotation.scalar }
 
             Label { text: "x: " }
-            Label { text: model.rotation.x.toFixed(3) }
+            Label { text: model.rotation.x }
 
             Label { text: "y: " }
-            Label { text: model.rotation.y.toFixed(3) }
+            Label { text: model.rotation.y }
 
             Label { text: "z: " }
-            Label { text: model.rotation.z.toFixed(3) }
+            Label { text: model.rotation.z }
         }
     }
 }
