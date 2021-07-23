@@ -97,6 +97,7 @@ Window {
             }
 
             Node {
+                id: copiedModel
                 eulerRotation: model.eulerRotation
 
                 Model {
@@ -292,6 +293,31 @@ Window {
                 onEditingFinished: {
                     model.rotation.z = Number.parseFloat(text);
                 }
+            }
+
+            Label {
+                Layout.columnSpan: 2
+                font.bold: true
+                text: "compare rotations:"
+            }
+
+            Label {
+                Layout.columnSpan: 2
+                text: "dot product:"
+            }
+            Label {}
+            TextField {
+                readonly property real value: {
+                    let q1 = model.rotation;
+                    let q2 = copiedModel.rotation;
+                    // dotProduct(q1, q2)
+                    return q1.scalar * q2.scalar + q1.x * q2.x + q1.y * q2.y + q1.z * q2.z;
+                }
+                Layout.preferredWidth: 180
+                palette.base: Math.abs(value) < 0.99999 ? "#f88" : "white"
+                readOnly: true
+                selectByMouse: true
+                text: value
             }
         }
     }
