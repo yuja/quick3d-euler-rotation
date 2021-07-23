@@ -297,6 +297,32 @@ Window {
 
             Label {
                 Layout.columnSpan: 2
+                text: "(press Ctrl+Shift+C to copy)"
+            }
+            TextArea {
+                id: rotationTextArea
+                Layout.columnSpan: 2
+                Layout.fillWidth: true
+                readOnly: true
+                selectByMouse: true
+                wrapMode: TextEdit.WordWrap
+                text: ("QQuaternion q(%1f, %2f, %3f, %4f);\n"
+                       .arg(model.rotation.scalar.toString())
+                       .arg(model.rotation.x.toString())
+                       .arg(model.rotation.y.toString())
+                       .arg(model.rotation.z.toString()))
+
+                Shortcut {
+                    sequence: "Ctrl+Shift+C"
+                    onActivated: {
+                        rotationTextArea.selectAll();
+                        rotationTextArea.copy();
+                    }
+                }
+            }
+
+            Label {
+                Layout.columnSpan: 2
                 font.bold: true
                 text: "compare rotations:"
             }
